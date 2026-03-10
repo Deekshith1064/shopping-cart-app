@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Shopping Cart App</title>
+<style>
+body{
+font-family: Arial;
+text-align:center;
+margin-top:50px;
+}
+
+button{
+padding:10px 20px;
+margin:5px;
+font-size:16px;
+cursor:pointer;
+}
+
+#cart{
+margin-top:20px;
+font-weight:bold;
+} </style>
+
+</head>
+
+<body>
+
+<h1>Shopping Cart Demo</h1>
+
+<button onclick="addItem('Apple')">Add Apple</button> <button onclick="addItem('Banana')">Add Banana</button> <button onclick="removeItem('Apple')">Remove Apple</button>
+
+<br><br>
+
+<button onclick="pay('Credit Card')">Pay with Credit Card</button> <button onclick="pay('PayPal')">Pay with PayPal</button>
+
+<div id="cart"></div>
+<div id="payment"></div>
+
+<script>
+
+let cart=[];
+
+function addItem(item){
+cart.push(item);
+displayCart();
+}
+
+function removeItem(item){
+let index=cart.indexOf(item);
+if(index!==-1){
+cart.splice(index,1);
+}
+displayCart();
+}
+
+function displayCart(){
+document.getElementById("cart").innerText=
+"Items in Cart: "+cart.join(", ");
+}
+
+function pay(method){
+let message="";
+if(method==="Credit Card"){
+message="Payment successful using Credit Card";
+}
+else if(method==="PayPal"){
+message="Payment successful using PayPal";
+}
+else{
+message="Payment method not supported";
+}
+
+document.getElementById("payment").innerText=message;
+}
+
+</script>
+
+</body>
+</html>
